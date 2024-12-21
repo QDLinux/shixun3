@@ -1,0 +1,18 @@
+#基本四项
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/day03
+    username: root
+    password: root
+    #切换连接池
+    type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis:
+  #别名配置
+  type-aliases-package: org.example.entity
+  #配置文件的位置
+  mapper-locations: classpath:mapper/**
+  #此配置 自动匹配数据库和实体类的字段(数据库是下滑线格式 自动匹配实体类的驼峰式命名规则)
+  configuration:
+    map-underscore-to-camel-case: true

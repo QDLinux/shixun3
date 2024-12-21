@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--类型别名-->
+    <typeAliases>
+        <!--方式1-->
+        <!--<typeAlias type="com.itheima.entity.User" alias="user"></typeAlias>-->
+        <!--方式2: 配置到包下 该包下所有的实体类自动别名 使用的就是类名 且不区分大小写-->
+        <package name="org.example.entity"></package>
+    </typeAliases>
+
+    <environments default="development">
+        <!--环境配置-->
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <!--数据库连接的基本四项-->
+                <!--驱动 com.mysql.jdbc.Driver 只使用mysql 6以前的版本  com.mysql.cj.jdbc.Driver   mysql 8版本-->
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <!--连接串 jdbc:mysql:// mysql连接协议 等效于 http://   localhost 本地可省略  3306 端口号可省略-->
+                <property name="url" value="jdbc:mysql://localhost:3306/day02"/>
+                <!--用户名-->
+                <property name="username" value="root"/>
+                <!--密码-->
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--加载操作数据库映射文件-->
+        <!--方式1:不用  <mapper resource="UserMapper.xml"/> 主配置文件加载映射文件-->
+        <!--<mapper resource="UserMapper.xml"/>-->
+        <!--方式2:不用 配置接口也可以
+            要求1: 配置文件的名称 必须 和接口的文件名称一致
+            要求2: 配置文件的位置 必须 和接口的位置一致
+        -->
+        <!--<mapper class="com.itheima.mapper.UserMapper"></mapper>-->
+        <!--
+            方式3:用 基于方式1和方式2的基础上
+            配置到包下 该包下 所有的接口和映射文件自动匹配
+            要求1: 配置文件的名称 必须 和接口的文件名称一致
+            要求2: 配置文件的位置 必须 和接口的位置一致
+        -->
+        <package name="org.example.mapper"></package>
+    </mappers>
+</configuration>

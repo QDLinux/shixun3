@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tlias
+    username: root
+    password: root
+
+#mybatis的日志
+mybatis:
+  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #驼峰式命名规则
+    map-underscore-to-camel-case: true

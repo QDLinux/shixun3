@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace: 名称空间 命名空间
+        要求书写格式: 接口的全限定的类名 包名.类名的结构  com.itheima.mapper.Xxxxx
+        需要唯一
+   所有的映射文件都是为了接口而存在的  每一个映射文件都描述一个接口中所有的内容
+-->
+<mapper namespace="org.example.mapper.UserMapper">
+    <!--
+        mybatis提供四个标签描述增删改查的四个方法
+        select insert update delete
+        标签体中加入sql语句
+    -->
+
+    <!--
+        描述方法的时候需要描述: 方法的名称 方法的返回值 方法的参数
+        public List<User> findAll(); //查询
+        select 描述方法
+            id: 描述的当前方法名称
+            resultType: 专门用于描述接口方法的返回值 result 结果 type类型 需要书写全限定类名
+    -->
+<!--    <select id="findAll" resultType="org.example.entity.User">-->
+<!--        select * from user-->
+<!--    </select>-->
+
+
+    <!--
+        public void save(User user);//保存
+        insert 描述方法 表示新增
+            id: 描述的当前方法名称
+            parameterType="" parameter参数 type 类型 要求书写全限定类名
+            xml中使用实体类中的数据 需要使用特殊的语法 #{实体类的属性名称}
+    -->
+    <insert id="save" parameterType="org.example.entity.User">
+        insert into user values(#{uid},#{name},#{password},#{email},#{birthday})
+    </insert>
+
+
+    <!--
+        public void update(User user);//修改
+        update 描述方法 表示新增
+            id: 描述的当前方法名称
+            parameterType="" parameter参数 type 类型 要求书写全限定类名
+    -->
+    <update id="update" parameterType="User">
+        update user set name=#{name},password=#{password},email=#{email},birthday=#{birthday} where uid = #{uid}
+    </update>
+
+
+    <!--
+        public void delete(Integer id);//删除
+            id: 描述的当前方法名称
+            parameterType="" parameter参数 type 类型 要求书写全限定类名
+    -->
+<!--    <delete id="delete" parameterType="java.lang.Integer">-->
+<!--        delete from user where uid = #{uid}-->
+<!--    </delete>-->
+
+
+    <!--public List<User> findByCondition(Integer uid , String password);
+条件方式1:不用  arg1, arg0
+    默认情况下 mybatis会参数放入数组中 只需要描述数组的位置即可
+    select * from user where uid>#{arg0} and password=#{arg1}
+条件方式2:不用  param1, param2
+    默认情况下 只需要描述参数的位置即可
+    select * from user where uid>#{param1} and password=#{param2}
+条件方式3:使用
+    在接口上定义 每一个属性在配置文件的中使用的名称即可 需要使用注解@Param
+    public List<User> findByCondition(@Param("id") Integer uid ,@Param("pwd") String password);
+条件方式4:使用-->
+    <select id="findByCondition" resultType="user" parameterType="user" >
+        select * from user where uid>#{id} and password=#{pwd}
+    </select>
+
+    <select id="findByCondition2" resultType="user" >
+        select * from user where uid>#{uid} and password=#{password}
+    </select>
+
+
+    <!--//模糊查询
+public List<User> findByName(String name);
+ select * from user where name like concat('%',#{name},'%') 只适合在mysql使用
+ concat(str1, str2 ...) 多个参数 mysql
+ concat(str1, str2) 两个参数 oracle 只支持两个参数
+  concat('%', 参数)
+  concat( 参数 ,'%')
+  concat(concat('%', 参数)  , '%')concat(concat('%', #{name})  , '%')
+  -->
+    <select id="findByName" resultType="user" parameterType="string">
+        select * from user where name like concat('%',#{name},'%')
+    </select>
+
+</mapper>

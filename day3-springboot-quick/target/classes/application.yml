@@ -1,0 +1,21 @@
+#表示注释
+server:
+  port: 8085
+
+# key value的语法
+username: zhangsan
+name: 张三
+password: 1234
+age: 20
+
+#对象数据
+user:
+  username: jack
+  password: 1111
+  age: 18
+#支持数组
+cityList:
+  # table - 值
+  - 上海
+  - 北京
+  - 天津
