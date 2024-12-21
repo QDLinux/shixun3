@@ -27,11 +27,11 @@ public class TestDemo {
 
 
         // 阿里云账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM用户进行API访问或日常运维，请登录RAM控制台创建RAM用户。
-        String accessKeyId = "LTAI5tHo9DCvBHwvrSYC2Q6q";
-        String accessKeySecret = "EJE51HgTUwK65D8ZB9BZmcafZ0diHJ";
+        String accessKeyId = "your accessKeyId";
+        String accessKeySecret = "your accessKeySecret";
 
         // 填写Bucket名称，例如examplebucket。
-        String bucketName = "shixun3-filestore";
+        String bucketName = "your bucketName";
         // 填写Object完整路径，完整路径中不能包含Bucket名称，例如exampledir/exampleobject.txt。
         //String objectName = "1.jpg";//定死了图片的上传名称  需要改成动态的
         //2024/12/11
