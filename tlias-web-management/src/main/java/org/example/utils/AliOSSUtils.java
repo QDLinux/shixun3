@@ -13,10 +13,10 @@ import java.util.UUID;
 
 @Component
 public class AliOSSUtils {
-    private String endpoint = "https://oss-cn-beijing.aliyuncs.com";
-    private String accessKeyId = "LTAI5tHo9DCvBHwvrSYC2Q6q";
-    private String accessKeySecret = "EJE51HgTUwK65D8ZB9BZmcafZ0diHJ";
-    private String bucketName = "shixun3-filestore";
+    private String endpoint = " your server url ";
+    private String accessKeyId = " your accessKeyId ";
+    private String accessKeySecret = " your accessKeySecret ";
+    private String bucketName = "your bucketName";
 
     /**
      * 实现上传图片到OSS
